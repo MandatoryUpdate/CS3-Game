@@ -8,8 +8,9 @@ public class GravityActor extends Actor
     {
         
     }
-    public void act(){
-        setLocation(getX(),getY()+1);
+    public void act(){        
+        gravSpeed+=0.5;
+        setLocation(getX(),getY()+gravSpeed);
         if(isBlocked())
             setLocation(getX(),getY()-1);
     }
@@ -23,7 +24,6 @@ public class GravityActor extends Actor
     }
     public boolean isFalling(){
         boolean ret;
-        gravSpeed+=1
         setLocation(getX(), getY() + gravSpeed);
         ret = isTouching(Block.class);
         setLocation(getX(), getY() - 1);
