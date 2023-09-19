@@ -42,12 +42,27 @@ public class Cat extends MovableAnimatedActor
         fallL.flipHorizontally();
         fallL.setBounds(28,4,54,80);
         
+        frames = new String[8];
+        for(int i=0;i<8;i++){
+            frames[i] = "img/cat/Jump ("+(i+1)+").png";
+        }
+        Animation jumpR = new Animation(50,frames);
+        jumpR.resize(100,87);
+        jumpR.setBounds(18,4,54,80);
+
+        Animation jumpL = new Animation(50,frames);
+        jumpL.resize(100,87);
+        jumpL.flipHorizontally();
+        jumpL.setBounds(28,4,54,80);
+        
         setWalkRightAnimation(walkR);
         setWalkLeftAnimation(walkL);
         setIdleRightAnimation(idleR);
         setIdleLeftAnimation(idleL);
         setFallRightAnimation(fallR);
         setFallLeftAnimation(fallL);
+        setJumpRightAnimation(jumpR);
+        setJumpLeftAnimation(jumpL);
     }
     
     public void act()
