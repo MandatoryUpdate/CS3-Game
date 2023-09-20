@@ -7,6 +7,7 @@ public class MovableAnimatedActor extends AnimatedActor{
     private Animation fallRight;
     private Animation fallLeft;
     private String currentAction;
+    private Animation jump;
     private String direction;
     
     public MovableAnimatedActor(){
@@ -14,6 +15,7 @@ public class MovableAnimatedActor extends AnimatedActor{
         walkLeft = null;
         idleRight = null;
         idleLeft = null;
+        jump = null;
         fallRight = null;
         fallLeft = null;
         direction = "right";
