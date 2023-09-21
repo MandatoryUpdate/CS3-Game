@@ -9,12 +9,11 @@ public class GravityActor extends Actor
         
     }
     public void act(){        
-        gravSpeed+=0.1;
-        setLocation(getX(),getY()+gravSpeed);
+        gravSpeed+=0.05;
         if(isBlocked())
             gravSpeed = 0;
             setLocation(getX(),getY()-1);
-            setLocation(getX(),getY()-1);
+        setLocation(getX(),getY()+gravSpeed);
     }
     
     public boolean isBlocked(){
