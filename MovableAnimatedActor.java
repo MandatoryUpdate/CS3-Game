@@ -7,7 +7,8 @@ public class MovableAnimatedActor extends AnimatedActor{
     private Animation fallRight;
     private Animation fallLeft;
     private String currentAction;
-    private Animation jump;
+    private Animation jumpRight;
+    private Animation jumpLeft;
     private String direction;
     
     public MovableAnimatedActor(){
@@ -15,7 +16,8 @@ public class MovableAnimatedActor extends AnimatedActor{
         walkLeft = null;
         idleRight = null;
         idleLeft = null;
-        jump = null;
+        jumpRight = null;
+        jumpLeft = null;
         fallRight = null;
         fallLeft = null;
         direction = "right";
@@ -62,13 +64,14 @@ public class MovableAnimatedActor extends AnimatedActor{
               newAction = "idleRight";
         }        
         
-        // if(isFalling()){
-                // if(direction.equals("right"))
-                    // newAction = "fallRight";
-                // if(direction.equals("left"))
-                    // newAction = "fallLeft";
-        // }
+        if(isFalling() && getAcceleration()>=0){
+                if(direction.equals("right"))
+                    newAction = "fallRight";
+                if(direction.equals("left"))
+                    newAction = "fallLeft";
+        }
         
+        System.out.println(getAcceleration());
         if(newAction!=null && !currentAction.equals(newAction)){
             if(newAction.equals("fallRight"))
                 setAnimation(fallRight);
@@ -91,10 +94,18 @@ public class MovableAnimatedActor extends AnimatedActor{
     }
     
     public void jumpLeft(){
-        
+        if(getAbleToJump()){
+            setAcceleration(-10);
+            setAnimation(jumpLeft);
+        }
+        setAbleToJump(false);
     }
     public void jumpRight(){
-        setAcceleration(-4);
+        if(getAbleToJump()){
+            setAcceleration(-10);
+            setAnimation(jumpRight);
+        }
+        setAbleToJump(false);
     }
     
     public void setIdleRightAnimation(Animation a){   
@@ -116,9 +127,9 @@ public class MovableAnimatedActor extends AnimatedActor{
         fallLeft = a;
     }
     public void setJumpLeftAnimation(Animation a){
-        fallLeft = a;
+        jumpLeft = a;
     }
     public void setJumpRightAnimation(Animation a){
-        fallLeft = a;
+        jumpRight = a;
     }
 }

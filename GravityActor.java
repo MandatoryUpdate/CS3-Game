@@ -4,6 +4,7 @@ public class GravityActor extends Actor
 {
     private double gravSpeed = 0;
     private double acceleration = 0;
+    private boolean ableToJump = false;
     
     public GravityActor()
     {
@@ -11,18 +12,26 @@ public class GravityActor extends Actor
     }
     public void act(){        
         gravSpeed+=0.05;
-        if(isBlocked())
+        if(isBlocked()){
             gravSpeed = 0;
+            ableToJump = true;
+        }
         setLocation(getX(),getY()+gravSpeed+acceleration);
-        if(acceleration>0)
+        if(acceleration<0)
             acceleration+=.5;
     }
     
     public void setAcceleration(int a){
         acceleration = a;
     }
-    public double getAccelertation(){
+    public double getAcceleration(){
         return acceleration;
+    }
+    public void setAbleToJump(boolean j){
+        ableToJump = j;
+    }
+    public boolean getAbleToJump(){
+        return ableToJump;
     }
     
     public boolean isBlocked(){
