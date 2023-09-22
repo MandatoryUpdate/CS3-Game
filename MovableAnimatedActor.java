@@ -62,12 +62,12 @@ public class MovableAnimatedActor extends AnimatedActor{
               newAction = "idleRight";
         }        
         
-        if(isFalling()){
-                if(direction.equals("right"))
-                    newAction = "fallRight";
-                if(direction.equals("left"))
-                    newAction = "fallLeft";
-        }
+        // if(isFalling()){
+                // if(direction.equals("right"))
+                    // newAction = "fallRight";
+                // if(direction.equals("left"))
+                    // newAction = "fallLeft";
+        // }
         
         if(newAction!=null && !currentAction.equals(newAction)){
             if(newAction.equals("fallRight"))
@@ -82,9 +82,9 @@ public class MovableAnimatedActor extends AnimatedActor{
                 setAnimation(walkRight);
             if(newAction.equals("walkLeft"))
                 setAnimation(walkLeft);
-            if(newAction.equals("jumpRight)"))
+            if(newAction.equals("jumpRight"))
                 jumpRight();
-            if(newAction.equals("jumpLeft)"))
+            if(newAction.equals("jumpLeft"))
                 jumpLeft();
             currentAction = newAction;
         }
@@ -94,7 +94,7 @@ public class MovableAnimatedActor extends AnimatedActor{
         
     }
     public void jumpRight(){
-        
+        setAcceleration(-4);
     }
     
     public void setIdleRightAnimation(Animation a){   
