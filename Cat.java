@@ -2,8 +2,8 @@ import mayflower.*;
 
 public class Cat extends MovableAnimatedActor
 {
-    private int score = 0;
-    private int lives = 3;
+    private static int score = 0;
+    private static int lives = 3;
     public Cat(){
         String[] frames = new String[10];
         for(int i=0;i<10;i++){
