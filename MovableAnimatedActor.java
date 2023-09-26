@@ -71,7 +71,7 @@ public class MovableAnimatedActor extends AnimatedActor{
                     newAction = "fallLeft";
         }
         
-        System.out.println(getAcceleration());
+        // System.out.println(getAcceleration());
         if(newAction!=null && !currentAction.equals(newAction)){
             if(newAction.equals("fallRight"))
                 setAnimation(fallRight);

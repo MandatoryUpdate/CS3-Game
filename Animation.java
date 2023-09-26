@@ -14,6 +14,9 @@ public class Animation
         currentFrame = 0;
     }
     
+    public MayflowerImage[] getFrames(){
+        return frames;
+    }
     public int getFramerate(){
         return framerate;
     }
