@@ -14,6 +14,7 @@ public class GravityActor extends Actor
         gravSpeed+=0.05;
         if(isBlocked()){
             gravSpeed = 0;
+            setLocation(getX(),getY() - 1);
             ableToJump = true;
         }
         setLocation(getX(),getY()+gravSpeed+acceleration);
