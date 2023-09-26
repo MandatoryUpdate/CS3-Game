@@ -17,6 +17,10 @@ public class GravityActor extends Actor
             setLocation(getX(),getY() - 1);
             ableToJump = true;
         }
+        if(isLadder())
+        {
+            gravSpeed = 0;
+        }
         setLocation(getX(),getY()+gravSpeed+acceleration);
         if(acceleration<0)
             acceleration+=.5;
@@ -41,11 +45,20 @@ public class GravityActor extends Actor
         }
         return false;
     }
+    public boolean isLadder(){
+        if(this.isTouching(Ladder.class)){
+            return true;
+        }
+        return false;
+    }
     public boolean isFalling(){
-        boolean ret;
+        boolean ret, ret2;
         setLocation(getX(), getY() + 1);
         ret = isTouching(Block.class);
+        ret2 = isTouching(Ladder.class);
+        if(ret == true || ret2 == true)
+            return false;
         setLocation(getX(), getY() - 1);
-        return !ret;
+        return true;
     }
 }
