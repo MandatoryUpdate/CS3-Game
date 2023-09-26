@@ -38,20 +38,37 @@ public class MovableAnimatedActor extends AnimatedActor{
            setLocation(x+5,y);
            newAction = "walkRight";
            direction = "right";
-           if(isBlocked())
+           if(isBlocked()){
               setLocation(x-1,y);
+              setAbleToJump(false);
+              setAnimation(walkRight);
+            }
+           if(Mayflower.isKeyDown(Keyboard.KEY_UP))
+           {
+               direction = "right";
+               newAction = "moveJumpRight";
+           }
         }
         else if(Mayflower.isKeyDown(Keyboard.KEY_LEFT) && x>0){
            setLocation(x-5,y);
            newAction = "walkLeft";
            direction = "left";
-           if(isBlocked())
+           if(Mayflower.isKeyDown(Keyboard.KEY_UP))
+           {
+               direction = "left";
+               newAction = "moveJumpLeft";
+           }
+           if(isBlocked()){
               setLocation(x+1,y);
+              setAbleToJump(false);
+              setAnimation(walkLeft);
+            }
         }
+        
         else if(Mayflower.isKeyDown(Keyboard.KEY_DOWN) && y+h<600)
            setLocation(x,y+5);
         else if(Mayflower.isKeyDown(Keyboard.KEY_UP) && y>0)
-           if(direction != null && direction.equals("left")){
+            if(direction != null && direction.equals("left")){
               newAction = "jumpLeft";
            }
            else
@@ -89,6 +106,15 @@ public class MovableAnimatedActor extends AnimatedActor{
                 jumpRight();
             if(newAction.equals("jumpLeft"))
                 jumpLeft();
+            if(newAction.equals("moveJumpRight")){
+                setLocation(x+5,y);
+                jumpRight();
+            }
+            if(newAction.equals("moveJumpLeft")){
+                setLocation(x-5,y);
+                jumpLeft();
+            }
+            
             currentAction = newAction;
         }
     }
