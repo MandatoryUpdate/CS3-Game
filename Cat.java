@@ -68,6 +68,8 @@ public class Cat extends MovableAnimatedActor
     public void act()
     {
         super.act();
+        this.updateText();
+
     }
     
     public void increaseScore( int i){
