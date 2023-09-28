@@ -1,4 +1,3 @@
-
 import mayflower.*;
 public class Level1 extends Level
 {
@@ -36,12 +35,12 @@ public class Level1 extends Level
     public void act(){
         System.out.println(cat.getX());
         if(cat.getX()>740 && getPart()+1<tiles.length){
+            y = cat.getY();
             increment();
-            cat.setLocation(50,400);
+            cat.setLocation(50,y);
         }
         if(cat.getX()<10 && getPart()-1>-1){
             decrease();
             cat.setLocation(730,400);
         }
     }
-}
