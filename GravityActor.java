@@ -1,4 +1,3 @@
-
 import mayflower.*;
 public class GravityActor extends Actor
 {
@@ -37,20 +36,20 @@ public class GravityActor extends Actor
     }
     
     public boolean isBlocked(){
-        if(this.isTouching(Block.class)){
-            return true;
-        }
-        return false;
+        boolean ret = false;
+        setLocation(getX(), getY() + 1);
+        ret = this.isTouching(Block.class);
+        setLocation(getX(), getY() - 1);
+        return ret;
     }
     
     public boolean isFalling(){
-        boolean ret;
+        boolean ret = false;
         while(isTouching(Block.class))
         {
-           setLocation(getX(), getY() - 1); 
+            ret = true;
+            setLocation(getX(), getY() - 1); 
         }
-        setLocation(getX(), getY() + 1);
-        ret = isTouching(Block.class);
         if(ret == true)
             return false;
         return true;
