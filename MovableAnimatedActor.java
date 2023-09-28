@@ -65,7 +65,7 @@ public class MovableAnimatedActor extends AnimatedActor{
             }
         }
         
-        else if(Mayflower.isKeyDown(Keyboard.KEY_DOWN) && isLadder())
+        else if(Mayflower.isKeyDown(Keyboard.KEY_DOWN))
         {
             if(direction.equals("left"))
             {
@@ -79,18 +79,7 @@ public class MovableAnimatedActor extends AnimatedActor{
             
         }
         else if(Mayflower.isKeyDown(Keyboard.KEY_UP) && y>0){
-           if(isLadder())
-           {
-             setLocation(x, y-5);
-             if(direction.equals("left"))
-              {
-                setAnimation(idleLeft);
-              }
-             else
-              {
-                setAnimation(idleRight);
-              }
-           }
+           
             if(direction != null && direction.equals("left")){
               newAction = "jumpLeft";
            }
