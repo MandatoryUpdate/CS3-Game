@@ -2,13 +2,15 @@
 import mayflower.*;
 public class TitleScreen extends World
 {
-    private StartButton start = new StartButton("img/dog/Fall (2).png","img/dog/Dead (4).png");
-    private EndButton end = new EndButton("img/dog/Fall (2).png","img/dog/Dead (4).png");
+    private StartButton start = new StartButton("img/Button/playButton.png","img/Button/playButton.png");
+    private EndButton end = new EndButton("img/Button/exitButton.png","img/Button/exitButton.png");
     public TitleScreen(){
         setBackground("img/BG/BG.png");
         showText("CS3 Game: ", 100, 300, Color.BLACK);
-        addObject(start,300,400);
-        addObject(end,600,400);
+        addObject(start,25,300);
+        start.scale(200,100);
+        addObject(end,300,300);
+        end.scale(200,100);
     }
     public void act(){
 
