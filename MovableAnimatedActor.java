@@ -92,6 +92,10 @@ public class MovableAnimatedActor extends AnimatedActor{
            }
            else
               newAction = "jumpRight";
+           if(isBlocked() && getAbleToJump() == false){
+               setLocation(x, y + 3);
+               setAcceleration(0);
+           }
         }
         else{
            if(direction != null && direction.equals("left")){
