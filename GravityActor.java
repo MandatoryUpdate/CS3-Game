@@ -45,11 +45,6 @@ public class GravityActor extends Actor
     
     public boolean isFalling(){
         boolean ret = false;
-        while(isTouching(Block.class))
-        {
-            ret = true;
-            setLocation(getX(), getY() - 1); 
-        }
         if(ret == true)
             return false;
         return true;
