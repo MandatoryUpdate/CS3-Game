@@ -30,6 +30,13 @@ public class MovableAnimatedActor extends AnimatedActor{
             setAnimation(idleRight);
         }
         
+        if(isFalling() && getAcceleration()>=0){
+            if(direction.equals("right"))
+                newAction = "fallRight";
+            if(direction.equals("left"))
+                newAction = "fallLeft";
+        }
+        
         int x = getX();
         int y = getY();
         int w = getWidth();
@@ -93,13 +100,6 @@ public class MovableAnimatedActor extends AnimatedActor{
            else
               newAction = "idleRight";
         }        
-        
-        if(isFalling() && getAcceleration()>=0){
-                if(direction.equals("right"))
-                    newAction = "fallRight";
-                if(direction.equals("left"))
-                    newAction = "fallLeft";
-        }
         
         // System.out.println(getAcceleration());
         if(newAction!=null && !currentAction.equals(newAction)){
