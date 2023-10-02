@@ -18,7 +18,7 @@ public class Level extends World
                 System.out.println(tiles[part][r][c]);
                 if(tiles[part][r][c].equals("ground")){
                     System.out.println("read");
-                    addObject(new Block(), c*100, r*100);
+                    addObject(new Block(), c*61, r*32);
                 }
             }
         }
