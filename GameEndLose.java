@@ -1,8 +1,8 @@
 import mayflower.*;
 public class GameEndLose extends World 
 {
-    private StartButton restart = new StartButton("img/Button/restartButton.png","img/Button/restartButton.png");
-    private EndButton exit = new EndButton("img/Button/exitButton.png", "img/Button/exitButton.png");
+    private StartButton restart = new StartButton("img/Button/restartButtonHighlight.png","img/Button/restartButton.png");
+    private EndButton exit = new EndButton("img/Button/exitButtonHighlight.png", "img/Button/exitButton.png");
     
     public GameEndLose() 
     {
