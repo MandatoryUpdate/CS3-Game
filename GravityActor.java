@@ -41,7 +41,6 @@ public class GravityActor extends Actor
     }
     
     public boolean isFalling(){
-        boolean ret = false;
         if(this.isBlocked())
             return false;
         return true;
