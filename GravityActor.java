@@ -10,9 +10,9 @@ public class GravityActor extends Actor
         
     }
     public void act(){
-        if(acceleration<0)
             acceleration = acceleration + gravSpeed;
         if(isBlocked()){
+            acceleration=0;
             setLocation(getX(),getY() - gravSpeed - 1);
             ableToJump = true;
         }
