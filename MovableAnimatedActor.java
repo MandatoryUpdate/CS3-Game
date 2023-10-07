@@ -30,7 +30,7 @@ public class MovableAnimatedActor extends AnimatedActor{
             setAnimation(idleRight);
         }
         
-        if(isFalling() && getAcceleration()>=0){
+        if(isOnGround()){
             if(direction.equals("right"))
                 newAction = "fallRight";
             if(direction.equals("left"))
@@ -86,13 +86,12 @@ public class MovableAnimatedActor extends AnimatedActor{
             
         }
         else if(Mayflower.isKeyDown(Keyboard.KEY_UP) && y>0){
-           
             if(direction != null && direction.equals("left")){
               newAction = "jumpLeft";
            }
            else
               newAction = "jumpRight";
-           if(isBlocked() && getAbleToJump() == false){
+           if(isTouchingBlockFromBottom()){
                setLocation(x, y + 3);
                setAcceleration(0);
            }
