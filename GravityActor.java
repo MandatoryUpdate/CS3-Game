@@ -1,7 +1,7 @@
 import mayflower.*;
 public class GravityActor extends Actor
 {
-    private double gravSpeed = 1;
+    private double gravSpeed = 0.5;
     private double acceleration = 0;
     private boolean ableToJump = false;
     
@@ -10,7 +10,7 @@ public class GravityActor extends Actor
         
     }
     public void act(){
-            acceleration = acceleration + gravSpeed;
+        acceleration = acceleration + gravSpeed;
         if(isBlocked()){
             acceleration=0;
             setLocation(getX(),getY() - gravSpeed - 1);
@@ -33,16 +33,14 @@ public class GravityActor extends Actor
     }
     
     public boolean isBlocked(){
-        boolean ret = false;
-        setLocation(getX(), getY() + 1);
-        ret = this.isTouching(Block.class);
-        setLocation(getX(), getY() - 1);
-        return ret;
+        return this.isTouching(Block.class);
     }
     
     public boolean isFalling(){
-        if(this.isBlocked())
-            return false;
-        return true;
+        boolean ret;
+        setLocation(getX(), getY() + 1);
+        ret = isTouching(Block.class);
+        setLocation(getX(), getY() - 1);
+        return !ret;
     }
 }
