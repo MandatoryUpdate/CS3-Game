@@ -10,11 +10,11 @@ public class Cat extends MovableAnimatedActor
             frames[i] = "img/3 Cyborg/Run/run"+i+".png";
         }
         Animation walkR = new Animation(100000000,frames);
-        walkR.resize(50,50);
+        walkR.resize(40,40);
         // walkR.setBounds(18,4,54,80);
         
         Animation walkL = new Animation(100000000,frames);
-        walkL.resize(50,50);
+        walkL.resize(40,40);
         walkL.flipHorizontally();
         // walkL.setBounds(28,4,54,80);
         
@@ -23,11 +23,11 @@ public class Cat extends MovableAnimatedActor
             frames[i] = "img/3 Cyborg/Idle/idle"+i+".png";
         }
         Animation idleR = new Animation(100000000,frames);
-        idleR.resize(50,50);
+        idleR.resize(40,40);
         // idleR.setBounds(18,4,54,80);
         
         Animation idleL = new Animation(100000000,frames);
-        idleL.resize(50,50);
+        idleL.resize(40,40);
         idleL.flipHorizontally();
         // idleL.setBounds(28,4,54,80);
         
@@ -36,11 +36,11 @@ public class Cat extends MovableAnimatedActor
             frames[i] = "img/3 Cyborg/Jump/jump"+i+".png";
         }
         Animation fallR = new Animation(100000000,frames);
-        fallR.resize(50,50);
+        fallR.resize(40,40);
         // fallR.setBounds(18,4,54,80);
 
         Animation fallL = new Animation(100000000,frames);
-        fallL.resize(50,50);
+        fallL.resize(40,40);
         fallL.flipHorizontally();
         // fallL.setBounds(28,4,54,80);
         
@@ -49,11 +49,11 @@ public class Cat extends MovableAnimatedActor
             frames[i] = "img/3 Cyborg/Jump/jump"+i+".png";
         }
         Animation jumpR = new Animation(100000000,frames);
-        jumpR.resize(50,50);
+        jumpR.resize(40,40);
         // jumpR.setBounds(18,4,54,80);
 
         Animation jumpL = new Animation(100000000,frames);
-        jumpL.resize(50,50);
+        jumpL.resize(40,40);
         jumpL.flipHorizontally();
         // jumpL.setBounds(28,4,54,80);
         
