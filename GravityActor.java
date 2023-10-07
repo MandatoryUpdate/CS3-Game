@@ -1,46 +1,58 @@
 import mayflower.*;
-public class GravityActor extends Actor
-{
+
+public class GravityActor extends Actor {
     private double gravSpeed = 0.5;
     private double acceleration = 0;
     private boolean ableToJump = false;
-    
-    public GravityActor()
-    {
-        
+
+    public GravityActor() {
     }
-    public void act(){
+
+    public void act() {
         acceleration = acceleration + gravSpeed;
-        if(isBlocked()){
-            acceleration=0;
-            setLocation(getX(),getY() - gravSpeed - 1);
+
+        if(isOnGround()) {
+            acceleration = 0;
             ableToJump = true;
+            setLocation(getX(), getY()-1);
+            System.out.println("yes");
         }
-        setLocation(getX(),getY()+acceleration);
+        if(isTouchingBlockFromBottom()) {
+            ableToJump = false;
+            setLocation(getX(), getY()+gravSpeed);
+        }
+
+        setLocation(getX(), getY() + acceleration);
     }
-    
-    public void setAcceleration(int a){
+
+    public void setAcceleration(double a) {
         acceleration = a;
     }
-    public double getAcceleration(){
+
+    public double getAcceleration() {
         return acceleration;
     }
-    public void setAbleToJump(boolean j){
+
+    public void setAbleToJump(boolean j) {
         ableToJump = j;
     }
-    public boolean getAbleToJump(){
+
+    public boolean getAbleToJump() {
         return ableToJump;
     }
-    
-    public boolean isBlocked(){
-        return this.isTouching(Block.class);
+
+    public boolean isOnGround() {
+        Actor blockBelow = getOneObjectAtOffset(0, getHeight() / 2, Block.class);
+        return blockBelow != null;
     }
-    
-    public boolean isFalling(){
-        boolean ret;
-        setLocation(getX(), getY() + 1);
-        ret = isTouching(Block.class);
-        setLocation(getX(), getY() - 1);
-        return !ret;
+
+    public boolean isBlocked() {
+        Actor blockLeft = getOneObjectAtOffset(-getWidth() / 2, 0, Block.class);
+        Actor blockRight = getOneObjectAtOffset(getWidth() / 2, 0, Block.class);
+        return blockLeft != null || blockRight != null;
+    }
+    public boolean isTouchingBlockFromBottom() {
+        Actor blockAbove = getOneObjectAtOffset(0, -getHeight() / 2, Block.class);
+        return blockAbove != null;
     }
 }
