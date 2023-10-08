@@ -9,11 +9,11 @@ public class GravityActor extends Actor {
     }
 
     public void act() {
-        acceleration = acceleration + gravSpeed;
+        setAcceleration(acceleration + gravSpeed);
 
         if(isOnGround()) {
-            acceleration = 0;
-            ableToJump = true;
+            setAcceleration(0);
+            serAbleToJump(true);
             setLocation(getX(), getY()-1);
             System.out.println("yes");
         }
