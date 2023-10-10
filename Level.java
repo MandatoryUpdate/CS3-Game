@@ -16,24 +16,57 @@ public class Level extends World
     public void buildScreen(int part){
         for(int r=0;r<tiles[part].length;r++){
             for(int c=0;c<tiles[part][0].length;c++){
-                System.out.println(tiles[part][r][c]);
-                if(tiles[part][r][c].equals("ground"))
+                String str = tiles[part][r][c];
+                System.out.print(str);
+                if(str.equals("ground"))
                     addObject(new Block(), c*50, r*50);
-                if(tiles[part][r][c].length()>0 && tiles[part][r][c].substring(0,1).equals("p"))
-                    addObject(new Punk(Integer.parseInt(tiles[part][r][c].substring(5,8)),Integer.parseInt(tiles[part][r][c].substring(9,12)),Integer.parseInt(tiles[part][r][c].substring(13,15))),c*100, r*100);
+                if(str.equals("lava"))
+                    addObject(new Lava(), c*50, r*50);
+                if(str.length()>0 && str.substring(0,4).equals("punk"))
+                    addObject(new Punk(Integer.parseInt(str.substring(5,8)),Integer.parseInt(str.substring(9,12)),Integer.parseInt(str.substring(13,16))),c*50, r*50);
+                if(str.length()>0 && str.substring(0,3).equals("key")){
+                    addObject(new Key(part,c*50, r*50),c*50, r*50);
+                    tiles[part][r][c] = "";
+                }
+                if(str.length()>0 && str.substring(0,4).equals("food")){
+                    Food food = new Food(part,Integer.parseInt(str.substring(5,8)));
+                    addObject(food,c*50, r*50);
+                    food.hide();
+                    food.appear(part);
+                    tiles[part][r][c] = "";
+                }
+                if(str.length()>0 && str.substring(0,4).equals("lock")){
+                    addObject(new Lock(part,Integer.parseInt(str.substring(5,6)),c*50, r*50),c*50, r*50);
+                    tiles[part][r][c] = "";
+                }
             }
+            System.out.println("");
         }
     }
     public void increment(){
         part++;
+        List<Collectable> objects = getObjects(Collectable.class);
+        for(int i=0;i<objects.size();i++){
+            objects.get(i).hide();
+            objects.get(i).appear(part);
+        }
+        removeObjects(getObjects(Hazard.class));
         removeObjects(getObjects(Block.class));
         removeObjects(getObjects(Enemy.class));
+        
         buildScreen(part);
     }
     public void decrease(){
         part--;
+        List<Collectable> objects = getObjects(Collectable.class);
+        for(int i=0;i<objects.size();i++){
+            objects.get(i).hide();
+            objects.get(i).appear(part);
+        }
+        removeObjects(getObjects(Hazard.class));
         removeObjects(getObjects(Block.class));
         removeObjects(getObjects(Enemy.class));
+        
         buildScreen(part);
     }
     public int getPart(){

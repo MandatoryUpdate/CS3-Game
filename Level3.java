@@ -1,8 +1,9 @@
 import mayflower.*;
-public class Level1 extends Level
+public class Level3 extends Level
 {
     private Cat cat;
     private int y;
+    //Make tiles size 12x16
     private static String[][][] tiles =  { 
                                    { 
                                      {"","","","","","","","","","","","","","","",""}, 
@@ -10,12 +11,12 @@ public class Level1 extends Level
                                      {"","","","","","","","","","","","","","","",""},
                                      {"","","","","","","","","","","","","","","",""}, 
                                      {"","","","","","","","","","","","","","","",""},
+                                     {"","","","","","ground","ground","","","","","","","","",""},
                                      {"","","","","","","","","","","","","","","",""},
                                      {"","","","","","","","","","","","","","","",""},
                                      {"","","","","","","","","","","","","","","",""},
-                                     {"","","","","food(500)","food(300)","food(150)","food(200)","","","","","","","",""},
-                                     {"","","","","","","","","","","","lock(2)","","","",""},
-                                     {"","","","","","key()","","","","","","","","","",""},
+                                     {"","","","","","","","","","","","","","","",""},
+                                     {"","","","","","","","","","","","","","","",""},
                                      {"ground","ground","ground","ground","ground","ground","ground","ground","ground","ground","ground","ground","ground","ground","ground","ground"},
                                    },
                                    
@@ -27,23 +28,22 @@ public class Level1 extends Level
                                      {"","","","","ground","","","","","ground","","","","","",""},
                                      {"","","","","","","","ground","","ground","","","","","",""},
                                      {"","","","","","","","","","","","","","","",""},
-                                     {"","","","","","","","","","","ground","","","","",""},
+                                     {"","","","key()","","","key()","","","","ground","","","","",""},
                                      {"","","","","","","","","","","","","","","",""},
                                      {"","","","","","","","","","","","","","","",""},
-                                     {"ground","lava","ground","","","","","","","","","","","","",""},
+                                     {"","","","","","lock(4)","key()","","","","","","","","",""},
                                      {"ground","ground","ground","ground","ground","ground","ground","ground","ground","ground","ground","ground","ground","ground","ground","ground"},
                                    },
                                    
                                 };
                                             
-    public Level1()
+    public Level3()
     {
         super(tiles);
         setBackground("img/BG/BG.png");
         Mayflower.showBounds(true);
         cat = new Cat();
         addObject(cat, 400, 100);
-        cat.setLives(3);
         showText("Score: "+cat.getScore()+" Lives: "+cat.getLives(), 10, 30, Color.BLACK);
     }
     public void act(){
