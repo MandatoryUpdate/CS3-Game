@@ -6,7 +6,7 @@ public class TitleScreen extends World
     private EndButton end = new EndButton("img/Button/exitButton.png","img/Button/exitButton.png");
     public TitleScreen(){
         setBackground("img/BG/BG.png");
-        showText("CS3 Game: ", 100, 300, Color.BLACK);
+        showText("Apocalypse Frontier", 100, 300, Color.BLACK);
         addObject(start,25,300);
         start.scale(200,100);
         addObject(end,300,300);
