@@ -101,6 +101,10 @@ public class Cat extends MovableAnimatedActor
         if(lives == 0)
             Mayflower.setWorld(new GameEndLose());
     }
+    
+    public void setLives(int l){
+        lives = l;
+    }
     public int getLives(){
         return lives;
     }
