@@ -13,7 +13,7 @@ public class GravityActor extends Actor {
 
         if(isOnGround()) {
             setAcceleration(0);
-            serAbleToJump(true);
+            setAbleToJump(true);
             setLocation(getX(), getY()-1);
             System.out.println("yes");
         }
