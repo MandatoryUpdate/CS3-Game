@@ -4,6 +4,10 @@ public class Cat extends MovableAnimatedActor
 {
     private static int score = 0;
     private static int lives = 3;
+    private static int keys = 0;
+    private int counter;
+    private boolean harmable = true;
+    
     public Cat(){
         String[] frames = new String[6];
         for(int i=0;i<6;i++){
@@ -71,7 +75,11 @@ public class Cat extends MovableAnimatedActor
     {
         super.act();
         this.updateText();
-
+        if(!harmable){
+            counter++;
+            if(counter>150)
+                harmable = true;
+        }
     }
     
     public void increaseScore( int i){
@@ -80,12 +88,31 @@ public class Cat extends MovableAnimatedActor
     public int getScore(){
         return score;
     }
+    public void zeroScore(){
+        score = 0;
+    }
     
     public void decreaseLives(){
-        lives--;
+        if(harmable){
+            lives--;
+            harmable = false;
+            counter = 0;
+        }
+        if(lives == 0)
+            Mayflower.setWorld(new GameEndLose());
     }
     public int getLives(){
         return lives;
+    }
+    
+    public void increaseKeys(){
+        keys++;
+    }
+    public int getKeys(){
+        return keys;
+    }
+    public void zeroKeys(){
+        keys = 0;
     }
     
     private void updateText(){
