@@ -52,6 +52,7 @@ public class Enemy extends AnimatedActor
                 newAction = "AttackL";
             movable = false;
             counter = 0;
+            getOneIntersectingObject(Cat.class).decreaseLives();
         }
         setLocation(getX()+move,getY());
 
