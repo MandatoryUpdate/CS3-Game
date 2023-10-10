@@ -23,12 +23,17 @@ public class MovableAnimatedActor extends AnimatedActor{
         direction = "right";
     }
     public void act(){
+        
         super.act();
         String newAction = null;
         if(currentAction == null){
             currentAction = "idle";
             setAnimation(idleRight);
         }
+        int x = getX();
+        int y = getY();
+        int w = getWidth();
+        int h = getHeight();
         
         if(isOnGround()){
             if(direction.equals("right"))
@@ -37,10 +42,6 @@ public class MovableAnimatedActor extends AnimatedActor{
                 newAction = "fallLeft";
         }
         
-        int x = getX();
-        int y = getY();
-        int w = getWidth();
-        int h = getHeight();
         if(Mayflower.isKeyDown(Keyboard.KEY_RIGHT) && x+w<800){
            setLocation(x+5,y);
            newAction = "walkRight";
