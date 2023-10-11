@@ -17,6 +17,10 @@ public class GravityActor extends Actor {
             setLocation(getX(), getY()-1);
             System.out.println("yes");
         }
+        if(isTouchingLadder()) {
+            setAcceleration(0);
+            setLocation(getX(), getY()-1);
+        }
         if(isTouchingBlockFromBottom()) {
             ableToJump = false;
             setLocation(getX(), getY()+gravSpeed);
@@ -44,6 +48,10 @@ public class GravityActor extends Actor {
     public boolean isOnGround() {
         Actor blockBelow = getOneObjectAtOffset(0, getHeight() / 2, Block.class);
         return blockBelow != null;
+    }
+    public boolean isTouchingLadder() {
+        Actor ladderTouching = isTouching(Ladder.class);
+        return ladderTouching != null;
     }
 
     public boolean isBlocked() {
