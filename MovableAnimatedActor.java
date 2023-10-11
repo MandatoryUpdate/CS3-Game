@@ -23,7 +23,6 @@ public class MovableAnimatedActor extends AnimatedActor{
         direction = "right";
     }
     public void act(){
-        
         super.act();
         String newAction = null;
         if(currentAction == null){
@@ -42,7 +41,7 @@ public class MovableAnimatedActor extends AnimatedActor{
                 newAction = "fallLeft";
         }
         
-        if(Mayflower.isKeyDown(Keyboard.KEY_RIGHT) && x+w<800){
+        if(Mayflower.isKeyDown(Keyboard.KEY_RIGHT)){
            setLocation(x+5,y);
            newAction = "walkRight";
            direction = "right";
@@ -57,7 +56,7 @@ public class MovableAnimatedActor extends AnimatedActor{
                newAction = "moveJumpRight";
            }
         }
-        else if(Mayflower.isKeyDown(Keyboard.KEY_LEFT) && x>0){
+        else if(Mayflower.isKeyDown(Keyboard.KEY_LEFT)){
            setLocation(x-5,y);
            newAction = "walkLeft";
            direction = "left";
@@ -72,21 +71,7 @@ public class MovableAnimatedActor extends AnimatedActor{
               setAnimation(walkLeft);
             }
         }
-        
-        else if(Mayflower.isKeyDown(Keyboard.KEY_DOWN))
-        {
-            if(direction.equals("left"))
-            {
-                setAnimation(idleLeft);
-            }
-            else
-            {
-                setAnimation(idleRight);
-            }
-            setLocation(x, y + 1);
-            
-        }
-        else if(Mayflower.isKeyDown(Keyboard.KEY_UP) && y>0){
+        else if(Mayflower.isKeyDown(Keyboard.KEY_UP)){
             if(direction != null && direction.equals("left")){
               newAction = "jumpLeft";
            }
@@ -137,18 +122,38 @@ public class MovableAnimatedActor extends AnimatedActor{
     }
     
     public void jumpLeft(){
+        int y = getY();
         if(getAbleToJump()){
             setAcceleration(-10);
             setAnimation(jumpLeft);
         }
         setAbleToJump(false);
+        setLocation(getX(), getY() - 1);
+        System.out.println(getAcceleration());
+        if(y == getY()){
+            System.out.print("true");
+        }
+        else
+        {
+            System.out.println("false");
+        }
     }
     public void jumpRight(){
+        int y = getY();
+        setLocation(getX(), getY() - 1);
         if(getAbleToJump()){
             setAcceleration(-10);
             setAnimation(jumpRight);
         }
         setAbleToJump(false);
+        System.out.print(getAcceleration() + " ");
+        if(y == getY()){
+            System.out.print("true");
+        }
+        else
+        {
+            System.out.println("false");
+        }
     }
     
     public void setIdleRightAnimation(Animation a){   
