@@ -19,7 +19,7 @@ public class EndButton extends Actor
             setImage(highlighted);
         if(Mayflower.mouseClicked(this))
         {
-            Mayflower.stop();
+            Mayflower.exit();
         }
     }
 }
