@@ -30,7 +30,7 @@ public class Level1 extends Level
                                      {"","","","","","","","","","","ground","","","","",""},
                                      {"","","","","","","","","","","","","","","",""},
                                      {"","","","","","","","","","","","","","","",""},
-                                     {"ground","lava","ground","","","","","","","","","","","","",""},
+                                     {"ground","","ground","","","","","","","","","","","","",""},
                                      {"ground","ground","ground","ground","ground","ground","ground","ground","ground","ground","ground","ground","ground","ground","ground","ground"},
                                    },
                                    
