@@ -46,7 +46,7 @@ public class GravityActor extends Actor {
     }
 
     public boolean isOnGround() {
-        Actor blockBelow = getOneObjectAtOffset(0, getHeight() / 2, Block.class);
+        boolean blockBelow = getOneObjectAtOffset(0, getHeight() / 2, Block.class);
         return blockBelow != null;
     }
     public boolean isTouchingLadder() {
