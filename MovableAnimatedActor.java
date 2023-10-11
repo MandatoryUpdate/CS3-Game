@@ -82,6 +82,48 @@ public class MovableAnimatedActor extends AnimatedActor{
                setAcceleration(0);
            }
         }
+        else if(isTouchingLadder())
+        {
+            if(Mayflower.isKeyDown(Keyboard.KEY_RIGHT))
+            {
+                setLocation(x+5,y);
+               newAction = "walkRight";
+               direction = "right";
+               if(isBlocked()){
+                  setLocation(x-1,y);
+                  setAbleToJump(false);
+                  setAnimation(walkRight);
+                }
+            }
+            else if(Mayflower.isKeyDown(Keyboard.KEY_LEFT))
+            {
+                setLocation(x-5,y);
+               newAction = "walkRight";
+               direction = "right";
+               if(isBlocked()){
+                  setLocation(x+1,y);
+                  setAbleToJump(false);
+                  setAnimation(walkRight);
+                }
+            }
+            else if(Mayflower.isKeyDown(Keyboard.KEY_UP))
+            {
+                setLocation(x, y-1);
+                if(isTouchingBlockFromBottom())
+                {
+                    setAbleToJump(false);
+                    setLocation(x, y+1);
+                }
+            }
+            else if(Mayflower.isKeyDown(Keyboard.KEY_DOWN))
+            {
+                setLocation(x, y+1);
+                if(isOnGround())
+                {
+                    setLocation(x, y-1);
+                }
+            }
+        }
         else{
            if(direction != null && direction.equals("left")){
               newAction = "idleLeft";
