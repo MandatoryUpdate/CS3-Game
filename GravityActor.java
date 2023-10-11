@@ -9,24 +9,20 @@ public class GravityActor extends Actor {
     }
 
     public void act() {
-        setAcceleration(acceleration + gravSpeed);
-
         if(isOnGround()) {
             setAcceleration(0);
             setAbleToJump(true);
             setLocation(getX(), getY()-1);
-            System.out.println("yes");
         }
         if(isTouchingLadder()) {
             setAcceleration(0);
-            setLocation(getX(), getY()-1);
         }
         if(isTouchingBlockFromBottom()) {
             ableToJump = false;
-            setLocation(getX(), getY()+gravSpeed);
+            setLocation(getX(), getY()+3);
         }
-
         setLocation(getX(), getY() + acceleration);
+        setAcceleration(acceleration + gravSpeed);
     }
 
     public void setAcceleration(double a) {
