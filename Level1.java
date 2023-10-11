@@ -47,14 +47,14 @@ public class Level1 extends Level
         showText("Score: "+cat.getScore()+" Lives: "+cat.getLives(), 10, 30, Color.BLACK);
     }
     public void act(){
+        y = cat.getY();
         if(cat.getX()>740 && getPart()+1<tiles.length){
-            y = cat.getY();
             increment();
             cat.setLocation(50,y);
         }
         if(cat.getX()<10 && getPart()-1>-1){
             decrease();
-            cat.setLocation(730,400);
+            cat.setLocation(730,y);
         }
     }
     public void setTiles(String[][][] t){
