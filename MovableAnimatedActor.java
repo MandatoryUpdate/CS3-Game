@@ -165,12 +165,12 @@ public class MovableAnimatedActor extends AnimatedActor{
     
     public void jumpLeft(){
         int y = getY();
+        setLocation(getX(), getY() - 1);
         if(getAbleToJump()){
             setAcceleration(-10);
             setAnimation(jumpLeft);
         }
         setAbleToJump(false);
-        setLocation(getX(), getY() - 1);
         System.out.println(getAcceleration());
         if(y == getY()){
             System.out.print("true");
