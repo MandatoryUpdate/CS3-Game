@@ -41,7 +41,7 @@ public class MovableAnimatedActor extends AnimatedActor{
                 newAction = "fallLeft";
         }
         
-        if(Mayflower.isKeyDown(Keyboard.KEY_RIGHT)){
+        if(Mayflower.isKeyDown(Keyboard.KEY_RIGHT) && x+w<800){
            setLocation(x+5,y);
            newAction = "walkRight";
            direction = "right";
@@ -56,7 +56,7 @@ public class MovableAnimatedActor extends AnimatedActor{
                newAction = "moveJumpRight";
            }
         }
-        else if(Mayflower.isKeyDown(Keyboard.KEY_LEFT)){
+        else if(Mayflower.isKeyDown(Keyboard.KEY_LEFT) && x>0){
            setLocation(x-5,y);
            newAction = "walkLeft";
            direction = "left";
@@ -82,7 +82,15 @@ public class MovableAnimatedActor extends AnimatedActor{
                setAcceleration(0);
            }
         }
-        else if(isTouchingLadder())
+        
+        else{
+           if(direction != null && direction.equals("left")){
+              newAction = "idleLeft";
+           }
+           else
+              newAction = "idleRight";
+        }        
+        if(isTouchingLadder())
         {
             if(Mayflower.isKeyDown(Keyboard.KEY_RIGHT))
             {
@@ -111,9 +119,10 @@ public class MovableAnimatedActor extends AnimatedActor{
                 setLocation(x, y-1);
                 if(isTouchingBlockFromBottom())
                 {
-                    setAbleToJump(false);
+                    setAcceleration(0);
                     setLocation(x, y+1);
                 }
+                System.out.println("climbing");
             }
             else if(Mayflower.isKeyDown(Keyboard.KEY_DOWN))
             {
@@ -123,14 +132,17 @@ public class MovableAnimatedActor extends AnimatedActor{
                     setLocation(x, y-1);
                 }
             }
+            else{
+                if(direction != null && direction.equals("left"))
+                {
+                    newAction = "idleLeft";
+                }
+                else{
+                    newAction = "idleRight";
+                }
+                setAbleToJump(true);
+            }
         }
-        else{
-           if(direction != null && direction.equals("left")){
-              newAction = "idleLeft";
-           }
-           else
-              newAction = "idleRight";
-        }        
         
         // System.out.println(getAcceleration());
         if(newAction!=null && !currentAction.equals(newAction)){
