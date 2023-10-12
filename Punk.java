@@ -10,18 +10,18 @@ public class Punk extends Enemy
         for(int i=0;i<6;i++){
             frames[i] = "img/2 Punk/Punk_run/Punk_r"+i+".png";
         }
-        Animation moveR = new Animation(50,frames); 
+        Animation moveR = new Animation(100000000,frames); 
         
-        Animation moveL = new Animation(50,frames);
+        Animation moveL = new Animation(100000000,frames);
         moveL.flipHorizontally();
         
         
         for(int i=0;i<6;i++){
             frames[i] = "img/2 Punk/Punk_attack/Punk_a"+i+".png";
         }
-        Animation attackR = new Animation(50,frames); 
+        Animation attackR = new Animation(100000000,frames); 
         
-        Animation attackL = new Animation(50,frames);
+        Animation attackL = new Animation(100000000,frames);
         attackL.flipHorizontally();
         
         setMoveLAnimation(moveL);
